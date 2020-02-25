@@ -36,6 +36,12 @@
     comment: "Azure DevOps Agent"
     shell: /bin/bash
 
+- name: Ensure docker users are added to the docker group.
+  user:
+    name: "{{ az_devops_agent_user }}"
+    groups: docker
+    append: true
+
 - name: Create directories
   file:
     state: directory
